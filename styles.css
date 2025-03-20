@@ -1,0 +1,565 @@
+*{
+    margin: 10;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+/* Contenedor global */
+.global-container2 {
+    display: flex;
+    flex-direction: column; /* Organiza los hijos en columna */
+    align-items: center; /* Centra horizontalmente los elementos */
+    width: 99vw; /* Ancho completo de la ventana */
+    height: 90vh; /* Alto completo de la ventana */
+    background-color: #181616; /* Fondo global */
+}
+
+/* Contenedor del encabezado */
+.header-container2 {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    width: 60vw; /* Similar al ancho de los hijos de side-panel */
+    padding: 10px; /* Espaciado interno */
+    background-color: #ffffff; /* Fondo blanco */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+    border-radius: 10px; /* Bordes redondeados */
+    margin-top: 20px; /* Espacio entre el header y restaurantemadre */
+}
+
+/* Contenido del encabezado */
+.header-content2 {
+    text-align: center; /* Centra el texto */
+    font-size: 0.8rem; /* Tamaño del texto */
+    color: #333; /* Color del texto */
+}
+
+/* Contenedor principal (restaurantemadre) */
+.restaurantemadre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: calc(100vh - 60px); /* Ajusta el alto restante después del header */
+    overflow: hidden;
+}
+
+/* Estilo para el visor */
+#viewer360 {
+    width: 70%;
+    height: 90%;
+    background-color: #000;
+    position: relative;
+}
+
+/* BOTONES DE NIVEL */
+
+#viewer360 .niveles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0);
+    padding-bottom: 10px;
+    width: auto;
+    border-radius: 5px;
+    position: absolute;
+    left: 88%;
+    top: 5%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+#viewer360 .niveles p {
+    font-size: larger;
+}
+
+#viewer360 .niveles button {
+    padding: 10px;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+#viewer360 .niveles button:hover {
+    background-color: lightgray;
+}
+
+#viewer360 .nivel-boton.activo {
+    background-color: yellow; /* Botón resaltado para el piso actual */
+}
+
+/* Botón de WhatsApp en la esquina superior izquierda */
+#viewer360 .whatsapp-btn {
+    position: absolute;
+    left: 2%;    /* Ajusta la distancia desde la izquierda */
+    top: 5%;     /* Ajusta la distancia desde la parte superior */
+    z-index: 2;  /* Asegura que se muestre por encima del visor */
+}
+
+#viewer360 .whatsapp-btn button {
+    padding: 10px;
+    background-color: #25D366; /* Color de fondo típico de WhatsApp */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#viewer360 .whatsapp-btn button:hover {
+    background-color: #1ebe57; /* Opción: un tono ligeramente más oscuro al pasar el mouse */
+}
+
+
+/* Panel lateral */
+.side-panel2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    height: 90%;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+/* Logo */
+
+.logo-container2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-container2 .logo {
+    max-width: 80%;
+    height: auto;
+}
+
+/* Texto */
+.text-container2 {
+    font-size: 1.2rem;
+    text-align: center;
+    color: #333;
+    margin: 10px 0;
+}
+
+.review {
+    margin-bottom: 1em;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+  }
+  .review img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .review-content {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .review-content strong {
+
+    font-size: 1.1em;
+  }
+  .review-comment{
+    padding: 10px;
+  }
+
+/* Botones */
+.buttons-container2 {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+}
+
+.buttons-container2 .btn1 {
+    padding: 10px 20px; /* Espaciado interno */
+    margin: 10px 0; /* Margen entre los botones */
+    font-size: 1rem; /* Tamaño de fuente */
+    color: #ffffff; /* Color del texto */
+    background: linear-gradient(90deg, #ff8c00, #ff0080, #8a2be2, #1e90ff, #32cd32); /* Gradiente inicial */
+    background-size: 300%; /* Tamaño más grande para la animación */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-position 0.5s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+    animation: neon-gradient 3s infinite; /* Animación de gradiente */
+}
+
+/* Efecto hover */
+.buttons-container2 .btn1:hover {
+    box-shadow: 0 0 15px #00ffcc, 0 0 30px #25D366; /* Efecto de neón al pasar el mouse */
+}
+
+/* Animación de gradiente */
+@keyframes neon-gradient {
+    0% {
+        background-position: 0% 50%; /* Inicio del gradiente */
+    }
+    50% {
+        background-position: 100% 50%; /* Mitad del gradiente */
+    }
+    100% {
+        background-position: 0% 50%; /* Final del gradiente */
+    }
+}
+
+
+.buttons-container2 .btn2 {
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #ffffff;
+    background: #25D366;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buttons-container2 .btn3 {
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #ffffff;
+    background: linear-gradient(45deg, #c32aa3, #4c5fd7, #7232bd, #f46f30, #ffdc7d);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.buttons-container2 .btn4 {
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #ffffff;
+    background: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.global-container2 {
+    display: flex;
+    flex-direction: column; /* Organiza los hijos en columna */
+    align-items: center; /* Centra horizontalmente los elementos */
+    justify-content: center;
+    width: 98vw; /* Ancho completo de la ventana */
+    height: 120vh; /* Alto completo de la ventana */
+    background-color: #181616; /* Fondo global */
+}
+
+.restaurantemadre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 98vw;
+    height: 95vh; /* Ajusta el alto restante después del header */
+    overflow: hidden;
+}
+
+    /* Estilo para el visor */
+#viewer360 {
+    width: 70%;
+    height: 90%;
+    background-color: #000;
+    margin-right: 2%;
+}
+
+/* Panel lateral */
+.side-panel2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    height: 90%;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+
+.text-container2 {
+    font-size: 0.8vw;
+    text-align: center;
+    color: #333;
+    margin: 10px 0;
+}
+
+@media (min-width: 1525px) and (max-width: 3004px){
+    #reviews-carousel > div.owl-stage-outer > div > div.owl-item.active > div > div > div.review-comment > p{
+        font-size: 20px
+    }
+}
+
+
+
+@media (min-width: 1025px) and (max-width: 1524px){
+
+    .global-container2 {
+        display: flex;
+        flex-direction: column; /* Organiza los hijos en columna */
+        align-items: center; /* Centra horizontalmente los elementos */
+        justify-content: center;
+        width: 98vw; /* Ancho completo de la ventana */
+        height: 120vh; /* Alto completo de la ventana */
+        background-color: #181616; /* Fondo global */
+    }
+
+    .restaurantemadre {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 98vw;
+        height: 95vh; /* Ajusta el alto restante después del header */
+        overflow: hidden;
+    }
+
+        /* Estilo para el visor */
+    #viewer360 {
+        width: 70%;
+        height: 90%;
+        background-color: #000;
+        margin-right: 2%;
+    }
+
+    /* Panel lateral */
+    .side-panel2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 25%;
+        height: 90%;
+        background-color: #ffffff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .review-comment{
+        width: 100%; margin-top: 10px; padding: 0 10px; max-height: 200px; overflow-y: auto;
+    }
+    
+
+    .text-container2 {
+        font-size: 0.8vw;
+        text-align: center;
+        color: #333;
+        margin: 10px 0;
+    }
+
+}
+
+@media (min-width: 685px) and (max-width: 1024px){
+
+        /* Contenedor global */
+    .global-container2 {
+        display: flex;
+        flex-direction: column; /* Organiza los hijos en columna */
+        align-items: center; /* Centra horizontalmente los elementos */
+        gap: 5px;
+        width: 100vw; /* Ancho completo de la ventana */
+        height: auto; /* Alto completo de la ventana */
+        background-color: #181616; /* Fondo global */
+    }
+
+    /* Contenedor del encabezado */
+    .header-container2 {
+        display: flex;
+        justify-content: center; /* Centra el contenido horizontalmente */
+        align-items: center; /* Centra el contenido verticalmente */
+        width: 60vw; /* Similar al ancho de los hijos de side-panel */
+        padding: 10px; /* Espaciado interno */
+        background-color: #ffffff; /* Fondo blanco */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+        border-radius: 10px; /* Bordes redondeados */
+        margin-top: 20px; /* Espacio entre el header y restaurantemadre */
+        margin-bottom: 20px;
+    }
+
+    /* Contenido del encabezado */
+    .header-content2 {
+        text-align: center; /* Centra el texto */
+        font-size: 0.8rem; /* Tamaño del texto */
+        color: #333; /* Color del texto */
+    }
+
+    .restaurantemadre {
+        display: flex;
+        width: 98vw;
+        height: 1300px;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+         /* Ajusta el alto restante después del header */
+        overflow: hidden;
+    }
+
+    #viewer360 {
+        width: 90%;
+        height: 1200px;
+        background-color: #000;
+    }
+
+    .side-panel2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 65%;
+        height: 90%;
+        background-color: #ffffff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .text-container2 {
+        font-size: 1.3rem;
+        text-align: center;
+        color: #333;
+        margin: 10px 0;
+    }
+
+}
+
+@media (max-width: 684px){
+
+    /* Contenedor global */
+.global-container2 {
+    display: flex;
+    flex-direction: column; /* Organiza los hijos en columna */
+    align-items: center; /* Centra horizontalmente los elementos */
+    gap: 5px;
+    width: 100vw; /* Ancho completo de la ventana */
+    height: auto; /* Alto completo de la ventana */
+    background-color: #181616; /* Fondo global */
+}
+
+/* Contenedor del encabezado */
+.header-container2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    width: 70vw; /* Similar al ancho de los hijos de side-panel */
+    padding: 10px; /* Espaciado interno */
+    background-color: #ffffff; /* Fondo blanco */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+    border-radius: 10px; /* Bordes redondeados */
+    margin-bottom: 20px;
+    margin-top: 20px; /* Espacio entre el header y restaurantemadre */
+}
+
+#viewer360 .niveles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0);
+    padding-bottom: 10px;
+    width: auto;
+    border-radius: 5px;
+    position: absolute;
+    left: 70%;
+    top: 2%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Botón de WhatsApp en la esquina superior izquierda */
+#viewer360 .whatsapp-btn {
+    position: absolute;
+    left: 3%;    /* Ajusta la distancia desde la izquierda */
+    top: 2%;     /* Ajusta la distancia desde la parte superior */
+    z-index: 2;  /* Asegura que se muestre por encima del visor */
+}
+
+#viewer360 .whatsapp-btn button {
+    padding: 15px;
+    background-color: #25D366; /* Color de fondo típico de WhatsApp */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#viewer360 .whatsapp-btn button:hover {
+    background-color: #1ebe57; /* Opción: un tono ligeramente más oscuro al pasar el mouse */
+}
+
+
+/* Contenido del encabezado */
+.header-content2 {
+    text-align: center; /* Centra el texto */
+    font-size: 0.6rem; /* Tamaño del texto */
+    color: #333; /* Color del texto */
+}
+
+.restaurantemadre {
+    display: flex;
+    width: 98vw;
+    height: 1300px;
+    flex-direction:column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+     /* Ajusta el alto restante después del header */
+    overflow: hidden;
+}
+
+#viewer360 {
+    width: 90%;
+    height: 700px;
+    background-color: #000;
+}
+
+.side-panel2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 500px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.text-container2 {
+    font-size: 0.8rem;
+    text-align: center;
+    color: #333;
+    margin: 10px 0;
+}
+
+
+
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Reseñas del lugar con Dynamic Library Import</title>
+    <style>
+      /* Estilos para las reseñas */
+      .review {
+        margin-bottom: 1em;
+        padding: 0.5em;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+      }
+      .review img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .review-content {
+        display: flex;
+        flex-direction: column;
+      }
+      .review-content strong {
+        font-size: 1.1em;
+      }
+    </style>
+    <script>
+      async function init() {
+        // Importar las librerías necesarias: "maps" y "places"
+        const { Map } = await google.maps.importLibrary("maps");
+        const { Place } = await google.maps.importLibrary("places");
+  
+        // Inicializar un mapa (oculto) para el contexto de la API
+        const map = new Map(document.getElementById("map"), {
+          center: { lat: 0, lng: 0 },
+          zoom: 15,
+        });
+  
+        // Crear una instancia de Place con el ID del lugar deseado
+        const place = new Place({
+          id: "ChIJM18LwDGmMI4RXZIn33hwL8Y",
+          requestedLanguage: "es"
+        });
+  
+        // Solicitar los campos deseados: "displayName" y "reviews"
+        await place.fetchFields({
+          fields: ["displayName", "reviews"]
+        });
+  
+        console.log("Nombre del lugar:", place.displayName);
+        console.log("Reseñas:", place.reviews);
+  
+        // Mostrar las reseñas en el div "reviews"
+        const reviewsDiv = document.getElementById("reviews");
+        if (place.reviews && place.reviews.length > 0) {
+          place.reviews.forEach(review => {
+            // Obtener el nombre del autor desde authorAttribution.displayName
+            const authorName =
+              review.authorAttribution && review.authorAttribution.displayName
+                ? review.authorAttribution.displayName
+                : "Sin autor";
+  
+            // Obtener la URL de la foto, si existe
+            const authorPhoto =
+              review.authorAttribution && review.authorAttribution.photoURI
+                ? review.authorAttribution.photoURI
+                : "";
+  
+            const reviewElem = document.createElement("div");
+            reviewElem.classList.add("review");
+  
+            reviewElem.innerHTML = `
+              ${authorPhoto ? `<img src="${authorPhoto}" alt="${authorName}">` : ''}
+              <div class="review-content">
+                <strong>${authorName}</strong>
+                <span>Calificación: ${review.rating || 'N/A'}</span>
+                <p>${review.text || ''}</p>
+              </div>
+            `;
+            reviewsDiv.appendChild(reviewElem);
+          });
+        } else {
+          reviewsDiv.textContent = "No se encontraron reseñas para este lugar.";
+        }
+      }
+  
+      // Hacer la función init global para que la API la invoque
+      window.init = init;
+    </script>
+  </head>
+  <body>
+    <!-- Div para el mapa (oculto, necesario para el Places API) -->
+    <div id="map" style="display: none;"></div>
+    <!-- Div donde se mostrarán las reseñas -->
+    <div id="reviews"></div>
+    <!-- Cargar la API de Maps con async, defer y el callback para iniciar la función init -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMIGStZG_dcrnibQqg7t9KM-v-Yyt8fFM&v=weekly&callback=init"></script>
+  </body>
+</html>
+
