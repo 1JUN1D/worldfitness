@@ -115,7 +115,14 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJFVX673"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
+  <div id="flyer-overlay">
+    <div class="flyer-content" onclick="redirectToPromo()">
+      <!-- Botón de cierre -->
+      <button class="close-flyer" onclick="closeFlyer(); event.stopPropagation()">×</button>
+      <!-- Aquí incluye tu flyer. Puedes usar una imagen o el contenido que desees -->
+      <img src="./flyer.jpeg" alt="Flyer Promocional" style="width: 100%; display: block;">
+    </div>
+  </div>
   <!-- NAV -->
   <div class="nav-wrapper">
     <div class="container">
@@ -233,6 +240,26 @@
     });
   </script>
   <!-- Código para inicializar el visor 360 (código existente) -->
+  <script>
+    // Función para cerrar el overlay manualmente
+    function closeFlyer() {
+      const overlay = document.getElementById('flyer-overlay');
+      if (overlay) {
+        overlay.style.display = 'none';
+      }
+    }
+  
+    // Función para redirigir a la URL del sorteo cuando se clickea el contenedor
+    function redirectToPromo() {
+      window.location.href = "https://www.dondeseria.com/sorteo/view_jx56.html";
+    }
+  
+    // Cierra el flyer automáticamente después de 3 segundos (3000 milisegundos)
+    window.addEventListener('load', function() {
+      setTimeout(closeFlyer, 3000);
+    });
+  </script>
+  
   <script type="importmap">
     {
       "imports": {
